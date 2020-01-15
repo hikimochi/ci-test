@@ -8,7 +8,6 @@ echo '2'
 $GIT_BIN checkout -B "$TARGET_BRANCH" origin/"$TARGET_BRANCH"
 echo '3'
 $GIT_BIN merge "$SOURCE_BRANCH"
-# $GIT_BIN push origin "$TARGET_BRANCH"
 remote_repo="https://${GITHUB_ACTOR}:${GITHUB_API_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 echo '4'
 $GIT_BIN push "$remote_repo" HEAD:"$TARGET_BRANCH"
