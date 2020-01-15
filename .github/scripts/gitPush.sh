@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eu
 GIT_BIN=/usr/bin/git
-echo '1'
+echo '112'
 $GIT_BIN fetch --prune
 echo '2'
 $GIT_BIN checkout -B "$TARGET_BRANCH" origin/"$TARGET_BRANCH"
