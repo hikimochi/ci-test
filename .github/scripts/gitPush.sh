@@ -1,5 +1,6 @@
 #!/bin/bash
 set -eu
+
 GIT_BIN=/usr/bin/git
 echo '1'
 
