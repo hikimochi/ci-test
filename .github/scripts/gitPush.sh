@@ -1,7 +1,11 @@
 #!/bin/bash
 set -eu
 GIT_BIN=/usr/bin/git
-echo '112'
+echo '1'
+
+$GIT_BIN config --global user.email "you@example.com"
+$GIT_BIN config --global user.name "Your Name"
+
 $GIT_BIN fetch --prune
 echo '2'
 $GIT_BIN checkout -B "$TARGET_BRANCH" origin/"$TARGET_BRANCH"
