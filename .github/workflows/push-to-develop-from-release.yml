@@ -1,0 +1,24 @@
+name: Push to develop from release
+# GitHub API TOKENとSLACK WEBHOOKはsecretに登録する
+on:
+  push:
+    branches:
+      - release
+jobs:
+  push-to-develop:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+    - name: push to release branch
+      env:
+        TARGET_BRANCH: develop
+        SOURCE_BRANCH: release
+      run: sh .github/scripts/gitPush.sh
+    - name: Slack success notification
+      if: success()
+      run: echo "success" # slack通知
+    - name: Slack failure notification
+      if: failure()
+      run: echo "failure" # slack通知
