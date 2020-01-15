@@ -1,7 +1,6 @@
 #!/bin/bash
 set -eu
 GIT_BIN=/usr/bin/git
-echo "$GITHUB_REPOSITORY"
 echo '1'
 $GIT_BIN fetch --prune
 echo '2'
