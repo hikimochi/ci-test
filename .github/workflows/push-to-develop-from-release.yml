@@ -1,5 +1,5 @@
 name: Push to develop from release
-# GitHub API TOKENとSLACK WEBHOOKはsecretに登録する 
+# GitHub API TOKENとSLACK WEBHOOKはsecretに登録する   
 on:
   push:
     branches:
