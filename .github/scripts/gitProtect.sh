@@ -11,6 +11,7 @@ echo $HTTP_STATUS
 if [ ${HTTP_STATUS} -eq 200 ]; then
     echo "OK"
 else
-    echo ${HTTP_RESPONSE}
+    echo ${HTTP_STATUS}
     cat /tmp/curl.log
+    exit 1
 fi
