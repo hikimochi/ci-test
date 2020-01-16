@@ -3,7 +3,7 @@ name: Push to develop from release
 on:
   push:
     branches:
-      - release
+      - master
 
 env:
   GITHUB_API_TOKEN: ${{ secrets.GITHUB_API }}
@@ -27,7 +27,6 @@ jobs:
       if: failure()
       run: echo "failure" # slack通知
 
-jobs:
   push-to-release:
     needs: push-to-develop
     runs-on: ubuntu-latest
