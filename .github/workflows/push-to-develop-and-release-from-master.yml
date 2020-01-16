@@ -15,11 +15,21 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: '0'
+    - name: disable branch protection
+      env:
+        JSON: .github/protect_rules/disable.json
+        TARGET_BRANCH: develop
+      run: sh .github/scripts/gitProtect.sh
     - name: push to develop branch
       env:
         TARGET_BRANCH: develop
         SOURCE_BRANCH: master
       run: sh .github/scripts/gitPush.sh
+    - name: enable branch protection
+      env:
+        JSON: .github/protect_rules/develop.json
+        TARGET_BRANCH: develop
+      run: sh .github/scripts/gitProtect.sh
     - name: Slack success notification
       if: success()
       run: echo "success" # slack通知
@@ -34,11 +44,20 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: '0'
+    - name: disable branch protection
+      env:
+        JSON: .github/protect_rules/disable.json
+        TARGET_BRANCH: release
+      run: sh .github/scripts/gitProtect.sh
     - name: push to release branch
       env:
         TARGET_BRANCH: release
         SOURCE_BRANCH: master
       run: sh .github/scripts/gitPush.sh
+    - name: enable branch protection
+      env:
+        JSON: .github/protect_rules/develop.json
+        TARGET_BRANCH: release
     - name: Slack success notification
       if: success()
       run: echo "success" # slack通知

@@ -25,6 +25,11 @@ jobs:
         TARGET_BRANCH: develop
         SOURCE_BRANCH: release
       run: sh .github/scripts/gitPush.sh
+    - name: disable branch protection
+      env:
+        JSON: .github/protect_rules/develop.json
+        TARGET_BRANCH: develop
+      run: sh .github/scripts/gitProtect.sh
     - name: Slack success notification
       if: success()
       run: echo "success" # slack通知
