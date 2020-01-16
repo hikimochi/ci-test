@@ -15,6 +15,11 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: '0'
+    - name: disable branch protection
+      env:
+        JSON: .github/protect_rules/disable.json
+        TARGET_BRANCH: develop
+      run: sh .github/scripts/gitProtect.sh
     - name: push to develop branch
       env:
         TARGET_BRANCH: develop
