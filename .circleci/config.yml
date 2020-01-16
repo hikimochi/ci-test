@@ -2,7 +2,7 @@ version: 2
 jobs:
   build-and-test:
     docker:
-      - image: debian:streach
+      - image: debian:stretch
     steps:
       - checkout
       - run:
