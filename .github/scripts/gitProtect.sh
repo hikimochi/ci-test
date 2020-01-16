@@ -6,12 +6,10 @@ HTTP_STATUS=`curl -s -H "Accept: application/vnd.github.luke-cage-preview+json" 
   https://api.github.com/repos"$GITHUB_REPOSITORY"/branches/"$TARGET_BRANCH"/protection \
   -X PUT -d @"$JSON" \
   -o /tmp/curl.log -w %{http_code}`
-echo $HTTP_STATUS
 
 if [ ${HTTP_STATUS} -eq 200 ]; then
-    echo "OK"
+    cat /tmp/curl.log
 else
-    echo ${HTTP_STATUS}
     cat /tmp/curl.log
     exit 1
 fi
