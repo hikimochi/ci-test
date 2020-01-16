@@ -18,7 +18,27 @@ jobs:
     - name: push to develop branch
       env:
         TARGET_BRANCH: develop
-        SOURCE_BRANCH: release
+        SOURCE_BRANCH: master
+      run: sh .github/scripts/gitPush.sh
+    - name: Slack success notification
+      if: success()
+      run: echo "success" # slack通知
+    - name: Slack failure notification
+      if: failure()
+      run: echo "failure" # slack通知
+
+jobs:
+  push-to-release:
+    needs: push-to-develop
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+    - name: push to release branch
+      env:
+        TARGET_BRANCH: release
+        SOURCE_BRANCH: master
       run: sh .github/scripts/gitPush.sh
     - name: Slack success notification
       if: success()
