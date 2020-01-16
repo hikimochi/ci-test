@@ -4,8 +4,8 @@ set -eu
 GIT_BIN=/usr/bin/git
 echo '1'
 
-$GIT_BIN config --global user.email "you@example.com"
-$GIT_BIN config --global user.name "Your Name"
+$GIT_BIN config --global user.email "rhikimochi@gmail.com"
+$GIT_BIN config --global user.name "hikimochi"
 
 $GIT_BIN fetch --prune
 echo '2'
